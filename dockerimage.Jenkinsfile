@@ -25,4 +25,10 @@ pipeline {
                 }
         }
     }
+     post {
+        success {
+            echo 'Trigerring pipeline for deploying docker image'
+            build job: 'Deploy_dockerimage', wait: false
+        }
+    }
 }
