@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 pipeline {
 	agent any
-
+   
     options {
         timestamps()
     }
@@ -20,8 +20,10 @@ pipeline {
     	}
     }
     post {
+    	always{
+    		archiveArtifacts artifacts: "target/myproject-*.jar", onlyIfSuccessful: true
+    	}
         success {
-        	archiveArtifacts artifacts: "target/myproject-*.jar",
         	echo 'Trigerring pipeline for generating docker image'
         	build job: 'Hello_world_dockerimage', wait: false
         }
