@@ -20,7 +20,7 @@ pipeline {
                 steps{
                     withCredentials([usernamePassword(credentialsId: 'titaniam-dockerhub', passwordVariable: 'dockerhubPass', usernameVariable: 'dockerhubUser')]) {
                         sh 'docker login -u="$dockerhubUser" -p="$dockerhubPass"'
-                        sh 'docker push vibhoranand/titaniam:webapp-$(date +"%s")'
+                        sh 'docker push vibhoranand/titaniam:webapp-latest'
                     }
                 }
         }
