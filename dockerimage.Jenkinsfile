@@ -8,7 +8,7 @@ pipeline {
     stages{
         stage ('Pull artifacts from Build hello-world app') {
             steps{
-                copyArtifacts projectName: 'build_hello_world_app' ,filter: '*.jar', fingerprintArtifacts: true 
+                copyArtifacts projectName: 'build_hello_world_app' , fingerprintArtifacts: true 
             }
         }
         stage('Build docker image .'){
